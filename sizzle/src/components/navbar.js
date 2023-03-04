@@ -278,7 +278,7 @@ import {
     },
     {
       label: 'Discover',
-      href: ''
+      href: '/matches'
     },
     {
       label: 'My Profile',
@@ -290,7 +290,7 @@ import {
     },
     {
       label: 'My Matches',
-      href: '/matches',
+      href: '#',
     },
     {
       label: 'Friends',

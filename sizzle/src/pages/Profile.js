@@ -15,6 +15,7 @@ import {
 } from '@chakra-ui/react';
 import { Form } from 'react-router-dom';
 
+
 function MyProfile() {
   const [formData, setFormData] = useState({
     profilePicture: '',
@@ -30,7 +31,7 @@ function MyProfile() {
     createdAt: '',
     bio: '',
   });
-
+  const [image, setImage] = useState(null);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -41,11 +42,12 @@ function MyProfile() {
     if (file) {
       const reader = new FileReader();
       reader.onload = (event) => {
-        setFormData({ ...formData, profilePicture: event.target.result });
+        setImage(event.target.result);
       };
       reader.readAsDataURL(file);
     }
   };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -57,21 +59,64 @@ function MyProfile() {
       <Container maxW="container.lg" py={10}>
         <Center>
           <Box maxW="md" w="full">
-            <form onSubmit={handleSubmit}>
-              <Stack spacing={4}>
-                <FormControl>
-                  <FormLabel>Profile Picture</FormLabel>
-                  {formData.profilePicture ? (
-                    <Image src={formData.profilePicture} />
-                  ) : null}
-                  <Input
-                    type="file"
-                    accept="image/*"
-                    name="profilePicture"
-                    onChange={handleImageChange}
-                  />
-                  <FormHelperText>Upload a new profile picture</FormHelperText>
-                </FormControl>
+            <Stack spacing={4}>
+              <FormControl>
+              <Center
+  w="120px"
+  h="120px"
+  position="relative"
+  bg="gray.300"
+  borderRadius="full"
+  left="150"
+>
+  {image ? (
+    <Image
+      src={image}
+      alt="Profile Picture"
+      borderRadius="full"
+      w="120px"
+      h="120px"
+    />
+  ) : (
+    <>
+      <Input
+        type="file"
+        accept="image/*"
+        onChange={handleImageChange}
+        display="none"
+        id="upload-input"
+      />
+      <FormLabel htmlFor="upload-input">
+        <Box
+          w="32px"
+          h="32px"
+          borderRadius="full"
+          bg="white"
+          color="gray.500"
+          fontSize="22px"
+          fontWeight="bold"
+          cursor="pointer"
+          userSelect="none"
+          textAlign="center"
+          position="absolute"
+          bottom="0"
+          left="20"
+        >
+          +
+        </Box>
+      </FormLabel>
+    </>
+  )}
+</Center>
+
+
+
+                <FormHelperText>Upload a new profile picture</FormHelperText>
+              </FormControl>
+
+              <Button colorScheme="blue" disabled={!image}>
+                Save Image
+              </Button>
 
                 <FormControl>
                   <FormLabel>Gender</FormLabel>
@@ -166,7 +211,6 @@ function MyProfile() {
                   Save Profile
                 </Button>
               </Stack>
-            </form>
           </Box>
         </Center>
       </Container>
