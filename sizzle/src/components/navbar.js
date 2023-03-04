@@ -290,7 +290,7 @@ import {
     },
     {
       label: 'My Matches',
-      href: '#',
+      href: '/mymatches',
     },
     {
       label: 'Friends',

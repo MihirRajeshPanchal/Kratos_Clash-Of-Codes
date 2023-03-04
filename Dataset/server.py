@@ -27,7 +27,7 @@ def get_time():
     print(values)
     # data=[576.987145,1.000000,166.000000,0.000000,0.000000,0.000000,1.000000,0.000000,23.000000]
     import Predict as pr
-    result = pr.score(data)
+    result = pr.score(data,gender)
     # print(result)
     # print(type(result))
     json_data = result.to_json(orient='records')
