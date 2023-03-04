@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import { FcAssistant, FcDonate, FcInTransit } from 'react-icons/fc';
-
+import Hero from './hero'
+import Features from './features'
 import {
     Container,
     SimpleGrid,
@@ -68,7 +69,9 @@ const Feature2 = ({ text, icon, iconBg }: Feature2Props) => {
 export default function SimpleThreeColumns() {
   return (
     <>
-    <Container maxW={'5xl'} py={35}>
+    <Hero/>
+    <Features/>
+    {/* <Container maxW={'5xl'} py={35}>
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
         <Stack spacing={4}>
           <Text
@@ -123,7 +126,7 @@ export default function SimpleThreeColumns() {
           />
         </Flex>
       </SimpleGrid>
-    </Container>
+    </Container> */}
     </>
   );
 }

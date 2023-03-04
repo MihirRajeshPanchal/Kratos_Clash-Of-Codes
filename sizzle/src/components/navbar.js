@@ -100,7 +100,7 @@ import {
               }}>
               Sign up
             </Button>
-            <ColorModeSwitcher justifySelf="flex-end" />
+            {/* <ColorModeSwitcher justifySelf="flex-end" /> */}
             <Menu>
               <MenuButton>
                 <Avatar
