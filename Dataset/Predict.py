@@ -2,7 +2,7 @@ def score(data):
     import pandas as pd
     import numpy as np
 
-    df=pd.read_csv("Dataset\\users_analysis.csv")
+    df=pd.read_csv("users_analysis.csv")
 
     from sklearn.preprocessing import LabelEncoder
     le = LabelEncoder()

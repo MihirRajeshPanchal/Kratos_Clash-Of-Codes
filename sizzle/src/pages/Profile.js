@@ -18,18 +18,14 @@ import { Form } from 'react-router-dom';
 
 function MyProfile() {
   const [formData, setFormData] = useState({
-    profilePicture: '',
-    gender: '',
+    gender: '1',
     height: '',
-    smoke: '',
-    drink: '',
-    datePreference: '',
+    smoke: '0',
+    drink: '0',
+    datePreference: '2',
     age: '',
-    isSubscribed: 'No',
-    isVerified: 'No',
-    updatedAt: '',
-    createdAt: '',
-    bio: '',
+    isSubscribed: '0',
+    isVerified: '0',
   });
   const [image, setImage] = useState(null);
   const handleInputChange = (e) => {
@@ -47,6 +43,31 @@ function MyProfile() {
       reader.readAsDataURL(file);
     }
   };
+
+  const makeApiCall = () => {
+    // console.log(formData);
+    fetch('http://localhost:5000/scorematchprofile', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(
+            {
+                "gender": formData.gender, 
+                "height": formData.height, 
+                "is_habit_drink": formData.drink, 
+                "is_habit_smoke": formData.smoke,
+                "is_verified": formData.isVerified,
+                "who_to_date": formData.datePreference,
+                "is_subscribed": formData.isSubscribed,
+                "age": formData.age
+    
+            })
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error(error))
+  }
 
 
   const handleSubmit = (e) => {
@@ -125,15 +146,21 @@ function MyProfile() {
                     value={formData.gender}
                     onChange={handleInputChange}
                   >
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="nonbinary">Non Binary</option>
+                    <option value="1">Male</option>
+                    <option value="0">Female</option>
+                    <option value="2">Non Binary</option>
                   </Select>
                 </FormControl>
 
                 <FormControl>
                     <FormLabel>Bio</FormLabel>
-                    <Textarea placeholder='Something About Yourself' onChange={handleInputChange}/>
+                    {/* <Textarea placeholder='Something About Yourself' value={formData.bio} onChange={handleInputChange}/> */}
+                    <Input
+                    type="text"
+                    name="bio"
+                    value={formData.bio}
+                    onChange={handleInputChange}
+                  />
                 </FormControl>
 
                 <FormControl>
@@ -154,15 +181,15 @@ function MyProfile() {
                     value={formData.smoke}
                     onChange={handleInputChange}
                   >
-                    <option value="never">Never</option>
-                    <option value="sometimes">Sometimes</option>
-                    <option value="often">Often</option>
+                    <option value="0">Never</option>
+                    <option value="2">Sometimes</option>
+                    <option value="1">Often</option>
                   </Select>
                 </FormControl>
 
                 <FormControl isReadOnly>
                     <FormLabel>Verified</FormLabel>
-                    <Input type="text" name="isSubscribed" value={formData.isVerified} />
+                    <Input type="text" name="isSubscribed" value={formData.isVerified === 1 ? "Yes" : "No"} />
                 </FormControl>
 
                 <FormControl>
@@ -172,9 +199,9 @@ function MyProfile() {
                     value={formData.drink}
                     onChange={handleInputChange}
                   >
-                    <option value="never">Never</option>
-                    <option value="sometimes">Sometimes</option>
-                    <option value="often">Often</option>
+                    <option value="0">Never</option>
+                    <option value="2">Sometimes</option>
+                    <option value="1">Often</option>
                   </Select>
                 </FormControl>
 
@@ -185,16 +212,16 @@ function MyProfile() {
                     value={formData.datePreference}
                     onChange={handleInputChange}
                   >
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="anyone">Anyone</option>
-                    <option value="nonbinary">Non Binary</option>
+                    <option value="2">Male</option>
+                    <option value="1">Female</option>
+                    <option value="0">Anyone</option>
+                    <option value="3">Non Binary</option>
                   </Select>
                 </FormControl>
 
                 <FormControl isReadOnly>
                     <FormLabel>Subcription</FormLabel>
-                    <Input type="text" name="isSubscribed" value={formData.isSubscribed} />
+                    <Input type="text" name="isSubscribed" value={formData.isSubscribed === 1 ? "Yes" : "No"} />
                 </FormControl>
 
                 <FormControl>
@@ -207,7 +234,7 @@ function MyProfile() {
                   />
                 </FormControl>
 
-                <Button colorScheme="blue" type="submit">
+                <Button colorScheme="blue" type="submit" onClick={makeApiCall}>
                   Save Profile
                 </Button>
               </Stack>
