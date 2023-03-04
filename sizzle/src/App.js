@@ -14,6 +14,7 @@ import Navbar from './components/navbar'
 import Footer from './components/footer'
 import Body from './components/body'
 import Signup from './pages/Signup'
+import Login from './pages/Login'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
@@ -25,6 +26,7 @@ function App() {
         <Routes>
           <Route path="*" element={ <Body /> } />
           <Route path="/signup" element={ <Signup /> } />
+          <Route path="/login" element={ <Login /> } />
         </Routes>
       </Router>
       <Footer />
