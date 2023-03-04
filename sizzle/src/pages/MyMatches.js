@@ -1,78 +1,47 @@
 import { useState } from 'react';
-import { Box, Flex, IconButton } from '@chakra-ui/react';
-import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons';
+import { Flex, Box, Image, IconButton } from '@chakra-ui/react';
+import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 
 const images = [
-  "https://via.placeholder.com/300x300.png?text=1",
-  "https://via.placeholder.com/300x300.png?text=2",
-  "https://via.placeholder.com/300x300.png?text=3",
-  "https://via.placeholder.com/300x300.png?text=4",
-  "https://via.placeholder.com/300x300.png?text=5",
-  "https://via.placeholder.com/300x300.png?text=6",
-  "https://via.placeholder.com/300x300.png?text=7",
-  "https://via.placeholder.com/300x300.png?text=8",
-  "https://via.placeholder.com/300x300.png?text=9",
-  "https://via.placeholder.com/300x300.png?text=10",
+  'https://via.placeholder.com/500x500?text=Image%201',
+  'https://via.placeholder.com/500x500?text=Image%202',
+  'https://via.placeholder.com/500x500?text=Image%203',
+  'https://via.placeholder.com/500x500?text=Image%204',
+  'https://via.placeholder.com/500x500?text=Image%205',
 ];
 
-function DragCarousel() {
+function CentralUICardCarousel() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [dragStartX, setDragStartX] = useState(0);
-  const [dragging, setDragging] = useState(false);
 
-  function handleDragStart(event) {
-    setDragStartX(event.clientX);
-    setDragging(true);
+  function handlePreviousClick() {
+    setCurrentImageIndex((currentImageIndex - 1 + images.length) % images.length);
   }
 
-  function handleDragEnd(event) {
-    const difference = event.clientX - dragStartX;
-    if (difference > 0 && currentImageIndex > 0) {
-      setCurrentImageIndex(currentImageIndex - 1);
-    } else if (difference < 0 && currentImageIndex < images.length - 1) {
-      setCurrentImageIndex(currentImageIndex + 1);
-    }
-    setDragging(false);
+  function handleNextClick() {
+    setCurrentImageIndex((currentImageIndex + 1) % images.length);
   }
 
   return (
-    <Flex position="relative" alignItems="center" justifyContent="center" w="100%">
-      <Box
-        display="flex"
-        flexDirection="row"
-        transition="transform 0.3s ease-out"
-        transform={`translateX(-${currentImageIndex * 100}%)`}
-        onMouseDown={handleDragStart}
-        onMouseMove={(event) => dragging && handleDragEnd(event)}
-        onMouseUp={handleDragEnd}
-        onMouseLeave={handleDragEnd}
-      >
-        {images.map((image, index) => (
-          <Box key={index} flexShrink={0} w="100%">
-            <img src={image} alt={`Image ${index + 1}`} />
-          </Box>
-        ))}
+    <Flex alignItems="center" justifyContent="center" h="100vh">
+      <Box maxW="80%">
+        <Flex justifyContent="space-between" alignItems="center">
+          <IconButton
+            icon={<MdChevronLeft />}
+            onClick={handlePreviousClick}
+            disabled={currentImageIndex === 0}
+            aria-label="Previous image"
+          />
+          <Image src={images[currentImageIndex]} alt={`Image ${currentImageIndex + 1}`} />
+          <IconButton
+            icon={<MdChevronRight />}
+            onClick={handleNextClick}
+            disabled={currentImageIndex === images.length - 1}
+            aria-label="Next image"
+          />
+        </Flex>
       </Box>
-      {currentImageIndex > 0 && (
-        <IconButton
-          aria-label="Previous Image"
-          icon={<ArrowLeftIcon />}
-          position="absolute"
-          left={0}
-          onClick={() => setCurrentImageIndex(currentImageIndex - 1)}
-        />
-      )}
-      {currentImageIndex < images.length - 1 && (
-        <IconButton
-          aria-label="Next Image"
-          icon={<ArrowRightIcon />}
-          position="absolute"
-          right={0}
-          onClick={() => setCurrentImageIndex(currentImageIndex + 1)}
-        />
-      )}
     </Flex>
   );
 }
 
-export default DragCarousel;
+export default CentralUICardCarousel;

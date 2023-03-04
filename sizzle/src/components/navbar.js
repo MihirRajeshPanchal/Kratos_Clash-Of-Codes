@@ -285,15 +285,7 @@ import {
       href: '/profile'
     },
     {
-      label: 'My Likes',
-      href: '#',
-    },
-    {
       label: 'My Matches',
       href: '/mymatches',
-    },
-    {
-      label: 'Friends',
-      href: '#',
     },
   ];
