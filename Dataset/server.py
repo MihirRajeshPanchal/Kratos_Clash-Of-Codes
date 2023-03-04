@@ -14,7 +14,7 @@ CORS(app)
 def get_time():
     
     # data = request.get_json()
-    data=[576.987145,1.000000,166.000000,0.000000,0.000000,0.000000,1.000000,0.000000,23.000000]
+    data=[1.000000,166.000000,0.000000,0.000000,0.000000,1.000000,0.000000,23.000000]
 	# Returning an api for showing in reactjs
     import Predict as pr
     result = pr.score(data)

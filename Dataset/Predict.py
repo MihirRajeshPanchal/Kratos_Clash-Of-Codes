@@ -2,7 +2,7 @@ def score(data):
     import pandas as pd
     import numpy as np
 
-    df=pd.read_csv("Dataset\\users_analysis.csv")
+    df=pd.read_csv("users_analysis.csv")
 
     from sklearn.preprocessing import LabelEncoder
     le = LabelEncoder()
@@ -15,9 +15,9 @@ def score(data):
     df['is_subscribed']=le.fit_transform(df['is_subscribed'])
     df.fillna(-1, inplace=True)
 
-    x=df.drop(['_id','college','bio','country','dob','email','updatedAt','face_detection_probabilities','insta_username','verified_at','interests','mobile','name','status','type','what_to_find','liked_counts','disliked_counts','Score'],axis=1)
+    x=df.drop(['_id','college','bio','country','dob','email','updatedAt','face_detection_probabilities','insta_username','createdAt','verified_at','interests','mobile','name','status','type','what_to_find','liked_counts','disliked_counts','Score'],axis=1)    
     y=df['Score']
-
+    
     from sklearn.model_selection import train_test_split
 
     x_train,x_test,y_train,y_test=train_test_split(x,y,train_size=0.3,random_state=0)
