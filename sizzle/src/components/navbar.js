@@ -292,4 +292,8 @@ import {
       label: 'Verification',
       href: '/verification',
     },
+    {
+      label: 'IceBreaker',
+      href: '/iceBreaker',
+    },
   ];

@@ -19,6 +19,7 @@ import Profile from './pages/Profile'
 import Matches from './pages/Matches'
 import MyMatches from './pages/MyMatches'
 import Verification from './pages/Verification';
+import IceBreaker from './pages/IceBreaker';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
@@ -35,6 +36,7 @@ function App() {
           <Route path="/matches" element={ <Matches />} />
           <Route path="/mymatches" element={ <MyMatches />} />
           <Route path="/verification" element={ <Verification />} />
+          <Route path="/icebreaker" element={ <IceBreaker />} />
         </Routes>
       </Router>
       <Footer />

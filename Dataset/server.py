@@ -4,11 +4,36 @@ import datetime
 from flask_cors import CORS
 import cv2
 import numpy as np
+import openai
 
 x = datetime.datetime.now()
 # Initializing flask app
 app = Flask(__name__)
 CORS(app)
+
+
+
+@app.route('/chat', methods=['POST'])
+def chat():
+	import json
+	data = request.get_json()
+	print("Json Data")
+	data_dict = data
+	values = list(data_dict.values())
+	openai.api_key = "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"
+	# Set up the GPT model
+	model_engine = "text-davinci-003"
+	prompt = values[0]
+	completion = openai.Completion.create(
+		engine=model_engine,
+		prompt=prompt,
+		max_tokens=1024,
+		n=1,
+		stop=None,
+		temperature=0.5,
+	)
+	response = completion.choices[0].text
+	return jsonify({'response': response})
 
 
 camera = cv2.VideoCapture(0)
@@ -84,43 +109,7 @@ def detect_faces():
 def verification():
     return Response(detect_faces(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
-# def generate_frames():
-#     # Open the video capture device
-#     cap = cv2.VideoCapture(0)
-	
-#     while True:
-#         # Read a frame from the capture device
-#         ret, frame = cap.read()
 
-#         if not ret:
-#             break
-
-#         # Convert the frame to grayscale
-#         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
-#         # Detect faces using the Haar cascades classifier
-#         faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
-
-#         # Draw rectangles around the detected faces
-#         for (x, y, w, h) in faces:
-#             cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
-
-#         # Encode the frame as a JPEG image
-#         _, jpeg = cv2.imencode('.jpg', frame)
-
-#         # Yield the JPEG image as a byte string
-#         yield (b'--frame\r\n'
-#                b'Content-Type: image/jpeg\r\n\r\n' + jpeg.tobytes() + b'\r\n')
-
-#     # Release the capture device
-#     cap.release()
-
-# @app.route('/verification')
-# def video_feed():
-#     # Return a Flask response that streams the OpenCV processed video frames
-#     return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
-
-# Route for seeing a data
 @app.route('/scorematchprofile', methods=['POST'])
 def get_time():
     
