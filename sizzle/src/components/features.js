@@ -45,19 +45,16 @@ export default function StatsGridWithImage() {
                 mb={3}
                 fontSize={'xl'}
                 color={'gray.500'}>
-                Technology
+                Sizzle
               </Text>
               <Heading
                 color={'white'}
                 mb={5}
                 fontSize={{ base: '3xl', md: '5xl' }}>
-                21st century agriculture
+                THE #1 COLLEGE DATING APP FOR YOU
               </Heading>
               <Text fontSize={'xl'} color={'gray.400'}>
-                The NewLife™ technology allows you to monitor your crops and get
-                complete insights at real time. The proprietary
-                software/hardware ecosystem prevents your plants from getting
-                neglected.
+              Tired of swiping right and left and never got a match? Well Idyll makes your life easier by finding people across colleges! Imagine finding your match from Mirinda Home and go on a mirinda date.
               </Text>
             </Box>
 
