@@ -14,7 +14,7 @@ import {
   Textarea,
 } from '@chakra-ui/react';
 import { Form } from 'react-router-dom';
-
+import { verification } from './Verification';
 
 function MyProfile() {
   const [formData, setFormData] = useState({
@@ -189,7 +189,7 @@ function MyProfile() {
 
                 <FormControl isReadOnly>
                     <FormLabel>Verified</FormLabel>
-                    <Input type="text" name="isSubscribed" value={formData.isVerified === 1 ? "Yes" : "No"} />
+                    <Input type="text" name="isSubscribed" value={verification === 'Yes' ? "Yes" : "No"} />
                 </FormControl>
 
                 <FormControl>

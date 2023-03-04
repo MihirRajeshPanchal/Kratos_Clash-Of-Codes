@@ -288,4 +288,8 @@ import {
       label: 'My Matches',
       href: '/mymatches',
     },
+    {
+      label: 'Verification',
+      href: '/verification',
+    },
   ];
