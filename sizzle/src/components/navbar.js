@@ -281,12 +281,16 @@ import {
       href: ''
     },
     {
+      label: 'My Profile',
+      href: '/profile'
+    },
+    {
       label: 'My Likes',
       href: '#',
     },
     {
       label: 'My Matches',
-      href: '#',
+      href: '/matches',
     },
     {
       label: 'Friends',
