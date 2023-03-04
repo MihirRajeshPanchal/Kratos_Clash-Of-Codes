@@ -68,24 +68,26 @@ const Feature2 = ({ text, icon, iconBg }: Feature2Props) => {
 export default function SimpleThreeColumns() {
   return (
     <>
-    <Container maxW={'5xl'} py={12}>
+    <Container maxW={'5xl'} py={35}>
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
         <Stack spacing={4}>
           <Text
             textTransform={'uppercase'}
-            color={'blue.400'}
+            color={'#fcfcfc'}
             fontWeight={600}
             fontSize={'sm'}
-            bg={useColorModeValue('blue.50', 'blue.900')}
+            bg={useColorModeValue("#fcfcfc")}
             p={2}
             alignSelf={'flex-start'}
             rounded={'md'}>
-            Our Story
+            Some
+            PopoverContent
+            To 
+            Increase
           </Text>
-          <Heading>A digital Product design agency</Heading>
+          <Heading>THE BEST DATING APP TO EVER EXIST</Heading>
           <Text color={'gray.500'} fontSize={'lg'}>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore
+            Forget the boring dates and invite new experiences to your threshold
           </Text>
           <Stack
             spacing={4}
@@ -96,64 +98,32 @@ export default function SimpleThreeColumns() {
             }>
             <Feature2
               
-              iconBg={useColorModeValue('yellow.100', 'yellow.900')}
-              text={'Business Planning'}
+              iconBg={useColorModeValue("#fc5b8b")}
+              text={'Easy & Accurate Matching'}
             />
             <Feature2
-              iconBg={useColorModeValue('green.100', 'green.900')}
-              text={'Financial Planning'}
+              iconBg={useColorModeValue('#ff3672')}
+              text={'Verified Profiles'}
             />
             <Feature2
              
-              iconBg={useColorModeValue('purple.100', 'purple.900')}
-              text={'Market Analysis'}
+              iconBg={useColorModeValue("#fa054e")}
+              text={'Personalized Choices'}
             />
           </Stack>
         </Stack>
         <Flex>
           <Image
             rounded={'md'}
-            alt={'feature image'}
+            alt={'Hearts'}
             src={
-              'couples.jpg'
+              'heart.png'
             }
             objectFit={'cover'}
           />
         </Flex>
       </SimpleGrid>
     </Container>
-
-
-
-
-
-
-
-    <Box p={4}>
-      <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
-        <Feature
-          icon={<Icon as={FcAssistant} w={10} h={10} />}
-          title={'Lifetime Support'}
-          text={
-            'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore...'
-          }
-        />
-        <Feature
-          icon={<Icon as={FcDonate} w={10} h={10} />}
-          title={'Unlimited Donations'}
-          text={
-            'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore...'
-          }
-        />
-        <Feature
-          icon={<Icon as={FcInTransit} w={10} h={10} />}
-          title={'Instant Delivery'}
-          text={
-            'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore...'
-          }
-        />
-      </SimpleGrid>
-    </Box>
     </>
   );
 }

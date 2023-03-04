@@ -48,8 +48,8 @@ import {
         color={useColorModeValue('gray.700', 'gray.200')}>
         <Container
           as={Stack}
-          maxW={'6xl'}
-          py={4}
+          maxW={'7xl'}
+          py={28}
           direction={{ base: 'column', md: 'row' }}
           spacing={4}
           justify={{ base: 'center', md: 'space-between' }}
