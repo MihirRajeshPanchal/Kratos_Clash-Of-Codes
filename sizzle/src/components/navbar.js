@@ -273,12 +273,16 @@ import {
   const NAV_ITEMS: Array<NavItem> = [
     {
       label: 'Home',
-      href: ''
+      href: '/'
       
     },
     {
       label: 'Discover',
       href: ''
+    },
+    {
+      label: 'My Profile',
+      href: '/profile'
     },
     {
       label: 'My Likes',
