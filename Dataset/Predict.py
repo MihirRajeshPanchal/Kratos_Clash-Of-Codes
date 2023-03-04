@@ -1,4 +1,4 @@
-def score(data):
+def score(data,gender):
     import pandas as pd
     import numpy as np
 
@@ -34,11 +34,13 @@ def score(data):
 
     target_score = res[0]
 
-    # calculate the difference between the score column and target_score
     df['score_diff'] = abs(df['Score'] - target_score)
 
-    # sort the DataFrame based on the score difference
-    df_sorted = df.sort_values(by='score_diff')
+    # filter the DataFrame to only include rows where gender is 1
+    df_filtered = df[df['gender'] == gender]
+
+    # sort the filtered DataFrame based on the score difference
+    df_sorted = df_filtered.sort_values(by='score_diff')
 
     # get the top 10 rows where score is close to target_score
     result = df_sorted.head(10)
