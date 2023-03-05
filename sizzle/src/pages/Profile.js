@@ -28,6 +28,14 @@ function MyProfile() {
     isVerified: '0',
   });
   const [image, setImage] = useState(null);
+  
+  const [fileContent, setFileContent] = useState('');
+  
+  // const handleFileRead = (e) => {
+  //   const content = data;
+  //   setFileContent(content);
+  // }
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -65,7 +73,10 @@ function MyProfile() {
             })
         })
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => {
+          console.log(data)
+          setFileContent(data)
+        })
         .catch(error => console.error(error))
   }
 
