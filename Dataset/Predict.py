@@ -36,14 +36,20 @@ def score(data,gender):
 
     df['score_diff'] = abs(df['Score'] - target_score)
 
-    # filter the DataFrame to only include rows where gender is 1
-    df_filtered = df[df['gender'] == gender]
-
-    # sort the filtered DataFrame based on the score difference
-    df_sorted = df_filtered.sort_values(by='score_diff')
+    if gender==0:
+        df_sorted = df.sort_values(by='score_diff')
 
     # get the top 10 rows where score is close to target_score
-    result = df_sorted.head(10)
+        result = df_sorted.head(10)
+    else:
+        # filter the DataFrame to only include rows where gender is 1
+        df_filtered = df[df['gender'] == gender]
+
+        # sort the filtered DataFrame based on the score difference
+        df_sorted = df_filtered.sort_values(by='score_diff')
+
+        # get the top 10 rows where score is close to target_score
+        result = df_sorted.head(10)
 
     # drop the score_diff column from the result
     result = result.drop(columns='score_diff')

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Box,
   Center,
@@ -17,6 +18,7 @@ import { Form } from 'react-router-dom';
 import { verification } from './Verification';
 
 function MyProfile() {
+    const navigate = useNavigate();
   const [formData, setFormData] = useState({
     gender: '1',
     height: '',
@@ -40,6 +42,8 @@ function MyProfile() {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+
+  let profiles = null
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -74,8 +78,9 @@ function MyProfile() {
         })
         .then(response => response.json())
         .then(data => {
-          console.log(data)
-          setFileContent(data)
+            navigate('/mymatches', { state: data })
+            profiles = data
+            console.log(profiles)
         })
         .catch(error => console.error(error))
   }
@@ -223,8 +228,8 @@ function MyProfile() {
                     value={formData.datePreference}
                     onChange={handleInputChange}
                   >
-                    <option value="2">Male</option>
-                    <option value="1">Female</option>
+                    <option value="1">Male</option>
+                    <option value="2">Female</option>
                     <option value="0">Anyone</option>
                     <option value="3">Non Binary</option>
                   </Select>

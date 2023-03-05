@@ -125,7 +125,7 @@ def get_time():
     values = np.array([float(val) for val in data_list], dtype='float64')
     values = list(values)
     print(values)
-    gender = values[0]
+    gender = values[5]
     # data=[1.000000,166.000000,0.000000,0.000000,0.000000,1.000000,0.000000,23.000000]
     import Predict as pr
     result = pr.score(values,gender)
