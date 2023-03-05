@@ -12,26 +12,62 @@ import {
     Text,
     Heading,
     chakra,
+    Button,
     Tooltip,
   } from '@chakra-ui/react';
   import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
   import { BsHeartFill, BsHeart } from 'react-icons/bs';
   import { FiShoppingCart } from 'react-icons/fi';
-  
-  const data = {
+  let LikeArray = [];
+  const data = [{
     isNew: true,
     imageURL:
       'https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=4600&q=80',
     name: 'Database Fetched Name',
-  };
+  },
+  {  imageURL:
+      'https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=4600&q=80',
+    name: 'New',
+  },
+];
   
 
   function ProductAddToCart() {
     const [liked, setLiked] = useState(false);
+    const [LikeArray, setLikeArray] = useState([]);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [counter, setCounter] = useState(0);
+    const bgColor = useColorModeValue('white', 'gray.800');
+
+
+  const handleLike = () => {
+    
+    if (!liked) {
+      setLikeArray([...LikeArray, data.name]);
+    } else {
+      const index = LikeArray.indexOf(data.name);
+      if (index > -1) {
+        const newArray = LikeArray.slice();
+        newArray.splice(index, 1);
+        setLikeArray(newArray);
+      }
+    }
+    setLiked(!liked);
+    setCounter(counter + 1);
+    setCurrentImageIndex(currentImageIndex === data.length - 1 ? 0 : currentImageIndex + 1);
+    setLiked(false);
+  };
+
+  const handleCross = () => {
+    setCurrentImageIndex(currentImageIndex === data.length - 1 ? 0 : currentImageIndex + 1);
+  };
+  if (counter === 10) {
+    return <Box textAlign="center">Come Back Tomorrow to view More Profiles !! </Box>;
+  }
     return (
       <Flex p={50} w="full" alignItems="center" justifyContent="center">
         <Box
-          bg={useColorModeValue('white', 'gray.800')}
+          bg={bgColor}
           maxW="sm"
           borderWidth="1px"
           rounded="lg"
@@ -48,12 +84,73 @@ import {
           )}
   
           <Image
-            src={data.imageURL}
-            alt={`Picture of ${data.name}`}
+            src={data[currentImageIndex].imageURL}
+            alt={`Picture of ${data[currentImageIndex].name}`}
             roundedTop="lg"
           />
   
           <Box p="6">
+          <Button
+          margin={{ mr: 4 }}
+            flex={1}
+            fontSize={'sm'}
+            rounded={'full'}
+            flex={1}
+            fontSize={'sm'}
+            rounded={'full'}
+            bg={'red.400'}
+            color={'white'}
+            boxShadow={
+              '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
+            }
+            _hover={{
+              bg: 'red.500',
+            }}
+            _focus={{
+              bg: 'red.500',
+            }}
+            width="10"
+            height="10"
+            >
+            <Flex
+              p={4}
+              alignItems="center"
+              justifyContent={'space-between'}
+              roundedBottom={'sm'}
+              cursor="pointer"
+              onClick={handleLike}
+            >
+              {liked ? (
+                <BsHeartFill fill="red" fontSize={'24px'} />
+              ) : (
+                <BsHeart fontSize={'24px'} />
+              )}
+            </Flex>
+          </Button>
+          <Button
+          flex={1}
+          fontSize={'sm'}
+          rounded={'full'}
+          bg={'white.400'}
+          color={'white'}> . </Button>
+          <Button
+            flex={1}
+            fontSize={'sm'}
+            rounded={'full'}
+            bg={'red.400'}
+            color={'white'}
+            boxShadow={
+              '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
+            }
+            _hover={{
+              bg: 'red.500',
+            }}
+            _focus={{
+              bg: 'red.500',
+            }}
+            onClick={handleCross}>
+            X
+          </Button>
             
             <Flex mt="1" justifyContent="space-between" alignContent="center">
               <Box
@@ -61,28 +158,16 @@ import {
                 fontWeight="semibold"
                 as="h4"
                 lineHeight="tight"
-                isTruncated>
-                {data.name}
+                isTruncated
+                top={"20hv"}>
+                {data[currentImageIndex].name}
               </Box>
-              <Flex
-            p={4}
-            alignItems="center"
-            justifyContent={'space-between'}
-            roundedBottom={'sm'}
-            borderLeft={'1px'}
-            cursor="pointer"
-            onClick={() => setLiked(!liked)}>
-            {liked ? (
-              <BsHeartFill fill="red" fontSize={'24px'} />
-            ) : (
-              <BsHeart fontSize={'24px'} />
-            )}
-          </Flex>
+              
             </Flex>
           </Box>
         </Box>
       </Flex>
     );
   }
-  
+  window.LikeArray = LikeArray;
   export default ProductAddToCart;
