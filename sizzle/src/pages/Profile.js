@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Box,
   Center,
@@ -14,9 +15,10 @@ import {
   Textarea,
 } from '@chakra-ui/react';
 import { Form } from 'react-router-dom';
-
+import { verification } from './Verification';
 
 function MyProfile() {
+    const navigate = useNavigate();
   const [formData, setFormData] = useState({
     gender: '1',
     height: '',
@@ -28,10 +30,20 @@ function MyProfile() {
     isVerified: '0',
   });
   const [image, setImage] = useState(null);
+  
+  const [fileContent, setFileContent] = useState('');
+  
+  // const handleFileRead = (e) => {
+  //   const content = data;
+  //   setFileContent(content);
+  // }
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+
+  let profiles = null
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -65,7 +77,11 @@ function MyProfile() {
             })
         })
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => {
+            navigate('/mymatches', { state: data })
+            profiles = data
+            console.log(profiles)
+        })
         .catch(error => console.error(error))
   }
 
@@ -189,7 +205,7 @@ function MyProfile() {
 
                 <FormControl isReadOnly>
                     <FormLabel>Verified</FormLabel>
-                    <Input type="text" name="isSubscribed" value={formData.isVerified === 1 ? "Yes" : "No"} />
+                    <Input type="text" name="isSubscribed" value={verification === 'Yes' ? "Yes" : "No"} />
                 </FormControl>
 
                 <FormControl>
@@ -212,8 +228,8 @@ function MyProfile() {
                     value={formData.datePreference}
                     onChange={handleInputChange}
                   >
-                    <option value="2">Male</option>
-                    <option value="1">Female</option>
+                    <option value="1">Male</option>
+                    <option value="2">Female</option>
                     <option value="0">Anyone</option>
                     <option value="3">Non Binary</option>
                   </Select>
@@ -235,7 +251,7 @@ function MyProfile() {
                 </FormControl>
 
                 <Button colorScheme="blue" type="submit" onClick={makeApiCall}>
-                  Save Profile
+                  Analyze Matches
                 </Button>
               </Stack>
           </Box>

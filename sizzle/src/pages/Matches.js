@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import {
     Flex,
@@ -18,18 +17,53 @@ import {
   import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
   import { BsHeartFill, BsHeart } from 'react-icons/bs';
   import { FiShoppingCart } from 'react-icons/fi';
-  let LikeArray = [];
-  const data = [{
-    isNew: true,
-    imageURL:
-      'https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=4600&q=80',
-    name: 'Database Fetched Name',
-  },
-  {  imageURL:
-      'https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=4600&q=80',
-    name: 'New',
-  },
-];
+  <Stack align={'center'}>
+          <Heading fontSize={'4xl'} textAlign={'center'}>
+            My Matches
+          </Heading>
+          <Text fontSize={'lg'} color={'gray.600'}>
+            to enjoy all of our cool features ✌️
+          </Text>
+        </Stack>
+        let LikeArray = [];
+
+        const data = [
+          {
+            id: 0,
+            name: "Product 1",
+            imageURL: "https://picsum.photos/id/101/400/400",
+          },
+          {
+            id: 1,
+            name: "Product 2",
+            imageURL: "https://picsum.photos/id/102/400/400",
+          },
+          {
+            id: 2,
+            name: "Product 3",
+            imageURL: "https://picsum.photos/id/103/400/400",
+          },
+          {
+            id: 3,
+            name: "Product 4",
+            imageURL: "https://picsum.photos/id/104/400/400",
+          },
+          {
+            id: 4,
+            name: "Product 5",
+            imageURL: "https://picsum.photos/id/105/400/400",
+          },
+          {
+            id: 5,
+            name: "Product 6",
+            imageURL: "https://picsum.photos/id/106/400/400",
+          },
+          {
+            id:6,
+            name:"",
+            imageURL:"male.png",
+          }
+        ];
   
 
   function ProductAddToCart() {
