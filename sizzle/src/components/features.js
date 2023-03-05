@@ -108,11 +108,10 @@ const stats = [
     ),
   },
   {
-    title: '13%',
+    title: '73%',
     content: (
       <>
-        <StatsText>Farms</StatsText> in North America has chosen NewLife™ as
-        their management solution
+        <StatsText>Couples</StatsText> stated that they are grateful for Sizzle
       </>
     ),
   },
@@ -120,8 +119,7 @@ const stats = [
     title: '250M+',
     content: (
       <>
-        <StatsText>Plants</StatsText> currently connected and monitored by the
-        NewLife™ software
+        <StatsText>Downloads</StatsText>
       </>
     ),
   },
