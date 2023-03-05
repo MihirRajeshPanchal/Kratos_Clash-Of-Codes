@@ -285,10 +285,6 @@ import {
       href: '/profile'
     },
     {
-      label: 'My Matches',
-      href: '/mymatches',
-    },
-    {
       label: 'Verification',
       href: '/verification',
     },

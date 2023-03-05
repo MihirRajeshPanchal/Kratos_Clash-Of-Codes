@@ -51,7 +51,7 @@ def detect_faces():
     id = 0
 
     # names related to ids: example ==> Marcelo: id=1,  etc
-    names = ['None', 'Mihir', 'Prinkal', 'Sarid', 'Tanay', 'Arsh'] 
+    names = ['None', 'Mihir', 'Sarid', 'Vedant', 'Chintan'] 
 
     # Initialize and start realtime video capture
     cam = cv2.VideoCapture(0)

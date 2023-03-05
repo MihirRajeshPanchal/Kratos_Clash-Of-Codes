@@ -251,7 +251,7 @@ function MyProfile() {
                 </FormControl>
 
                 <Button colorScheme="blue" type="submit" onClick={makeApiCall}>
-                  Save Profile
+                  Analyze Matches
                 </Button>
               </Stack>
           </Box>
