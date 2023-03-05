@@ -30,39 +30,54 @@ import {
         const data = [
           {
             id: 0,
-            name: "Product 1",
-            imageURL: "https://picsum.photos/id/101/400/400",
+            name: "Prakhar",
+            imageURL: "male.png",
           },
           {
             id: 1,
-            name: "Product 2",
-            imageURL: "https://picsum.photos/id/102/400/400",
+            name: "Ritz",
+            imageURL: "female.png",
           },
           {
             id: 2,
-            name: "Product 3",
-            imageURL: "https://picsum.photos/id/103/400/400",
+            name: "Amit",
+            imageURL: "male.png",
           },
           {
             id: 3,
-            name: "Product 4",
-            imageURL: "https://picsum.photos/id/104/400/400",
+            name: "Aditya",
+            imageURL: "male.png",
           },
           {
             id: 4,
-            name: "Product 5",
-            imageURL: "https://picsum.photos/id/105/400/400",
+            name: "Khushi",
+            imageURL: "female.png",
           },
           {
             id: 5,
-            name: "Product 6",
-            imageURL: "https://picsum.photos/id/106/400/400",
+            name: "Jahnvi",
+            imageURL: "female.png",
           },
           {
             id:6,
-            name:"",
+            name:"Kailash",
             imageURL:"male.png",
-          }
+          },
+          {
+            id:7,
+            name:"Kishor",
+            imageURL:"male.png",
+          },
+          {
+            id:8,
+            name:"Himadri",
+            imageURL:"female.png",
+          },
+          {
+            id:9,
+            name:"Sankalp",
+            imageURL:"male.png",
+          },
         ];
   
 
